@@ -19,6 +19,28 @@ docker pull malaohu/mobaxterm-genkey
 docker run -d -p 5000:5000 malaohu/mobaxterm-genkey
 ```
 
+## docker-compse
+
+malaohu/mobaxterm-genkey 是不支持arm的，需要自行打包镜像
+
+```
+下载代码，进入对应的目录
+docker build -t malaohu/mobaxterm-genkey:3.6 .
+```
+
+使用docker-compose来启动镜像
+```
+version: '3'
+
+services:
+  mobaxterm-genkey:
+    image: malaohu/mobaxterm-genkey:3.6
+    container_name: mobaxterm-genkey
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+```
+
 
 ## 使用方法
 访问：IP:5000
